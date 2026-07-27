@@ -6,7 +6,7 @@
 #define SERVER_PORT "12000"
 #define BUFFER_SIZE 1024
 
-void to_upper(char *s);
+int to_upper(char *s);
 
 int main(void)
 {
@@ -47,17 +47,18 @@ int main(void)
 				(struct sockaddr *)&from, &from_length);
 
 		printf("received message: %s\n", buffer);
-		to_upper(buffer);
+		int buffer_length = to_upper(buffer);
 
-		sendto(socketfd, (void *)buffer, from_length, 0,
+		sendto(socketfd, (void *)buffer, buffer_length, 0,
 				(struct sockaddr *)&from, from_length);
 	}
 }
 
-void to_upper(char *s)
+int to_upper(char *s)
 {
-	int c;
-	for(int i = 0; (c = s[i]) != '\0'; i++)
+	int c, i;
+	for(i = 0; (c = s[i]) != '\0'; i++)
 		if(c >= 'a' && c <= 'z')
 			s[i] = c - 32;
+	return i;
 }
