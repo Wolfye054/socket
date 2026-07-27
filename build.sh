@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gcc udp_server.c -o server -g
+gcc $1_$2.c -o $2 -g
