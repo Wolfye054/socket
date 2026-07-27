@@ -3,6 +3,7 @@
 #include <netdb.h>
 #include <stdio.h>
 #include <unistd.h>
+#include "ip.h"
 
 #define SERVER_PORT "12000"
 #define BUFFER_SIZE 1024
@@ -18,9 +19,8 @@ int main(void)
 
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_DGRAM;
-	hints.ai_flags = AI_PASSIVE;
 
-	status = getaddrinfo(NULL, SERVER_PORT, &hints, &res);
+	status = getaddrinfo(SERVER_IP, SERVER_PORT, &hints, &res);
 	if(status != 0)
 	{
 		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(status));
