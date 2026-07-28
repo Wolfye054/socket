@@ -98,7 +98,7 @@ char *get_filename(char *s, int lim)
 	for(name_length = 0; i < lim && !isspace(s[i]); i++, name_length++)
 		buffer[name_length] = s[i];
 
-	buffer[0] = '\0';
+	buffer[i] = '\0';
 
 	return buffer;
 }
