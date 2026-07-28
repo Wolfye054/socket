@@ -60,6 +60,7 @@ int main(void)
 		if(!file)
 		{
 			send(connection_socket, (void *)HTTP_404, sizeof HTTP_404 - 1, 0);
+			close(connection_socket);
 			continue;
 		}
 
