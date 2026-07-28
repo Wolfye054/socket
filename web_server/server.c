@@ -55,6 +55,8 @@ int main(void)
 		char *filename = get_filename(buffer, BUFFER_SIZE);
 		FILE *file = fopen(filename, "rb");
 
+		printf("%s\n", filename);
+
 		if(!file)
 		{
 			send(connection_socket, (void *)HTTP_404, sizeof HTTP_404 - 1, 0);
