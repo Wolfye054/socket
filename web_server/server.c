@@ -72,9 +72,10 @@ int main(void)
 
 		send(connection_socket, (void *)HTTP_200, sizeof HTTP_200 - 1, 0);
 
-		for(void *data; fread(data, 1, 1, file);)
+		char byte;
+		for(; fread((void *)&byte, 1, 1, file);)
 		{
-			send(connection_socket, data, 1, 0);
+			send(connection_socket, (void *)&byte, 1, 0);
 		}
 		send(connection_socket, (void *)"\r\n", sizeof "\r\n" - 1, 0);
 
