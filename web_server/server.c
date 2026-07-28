@@ -77,19 +77,27 @@ int main(void)
 
 char *get_filename(char *s, int lim)
 {
-	static char buffer[BUFFER_SIZE];
+	static char buffer[BUFFER_SIZE + 1];
 	int i, name_length;
 
 	buffer[0] = '\0';
 
+	// skip white space
 	for(i = 0; i < lim && isspace(s[i]); i++)
 		;
 
+	// skip first word
 	for(; i < lim && isalpha(s[i]); i++)
+		;
+
+	// skip white space
+	for(i = 0; i < lim && isspace(s[i]); i++)
 		;
 
 	for(name_length = 0; i < lim && !isspace(s[i]); i++, name_length++)
 		buffer[name_length] = s[i];
+
+	buffer[0] = '\0';
 
 	return buffer;
 }
