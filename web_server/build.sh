@@ -1,1 +1,1 @@
-gcc server.c -o server -g
+clang server.c -o server

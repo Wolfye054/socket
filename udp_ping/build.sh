@@ -1,1 +1,1 @@
-clang client.c -o client
+clang $1.c -o $1
